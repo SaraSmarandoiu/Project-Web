@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h2>Signup</h2>
+    <form id="signup-form">
+      <label for="name">Nume:</label>
+      <input type="text" id="name" required>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+      
+      <label for="password">Parola:</label>
+      <input type="password" id="password" required>
+      
+      <label for="phone">Telefon:</label>
+      <input type="text" id="phone" required>
+      
+      <label for="address">Adresă:</label>
+      <input type="text" id="address" required>
+      
+      <button type="submit">Signup</button>
+    </form>
+  </main>
+
+  <script>
+    document.getElementById('signup-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const phone = document.getElementById('phone').value;
+      const address = document.getElementById('address').value;
+
+      try {
+        const response = await fetch('http://localhost:3000/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, password, phone, address })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          alert('Cont creat cu succes!');
+          window.location.href = 'login.html';
+        } else {
+          alert(`Eroare: ${data.message}`);
+        }
+      } catch (err) {
+        console.error('Eroare la înregistrare:', err);
+        alert('A apărut o eroare. Încearcă din nou.');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magazin Cosmetice</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Magazin Cosmetice</h1>
+    <nav>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Signup</a>
+      <button id="cart-button" onclick="openCart()">Coșul meu (<span id="cart-count">0</span>)</button>
+      <button class="logout-button" onclick="logout()">Delogare</button>
+      
+    </nav>
+  </header>
+
+  <main>
+    <div id="product-list"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

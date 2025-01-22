@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coșul meu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Coșul meu</h1>
+    <nav>
+      <a href="index.html">Produse</a>
+      <button class="logout-button" onclick="logout()">Delogare</button>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Produse în coș</h2>
+    <div id="cart-items">
+      <p>Se încarcă produsele din coș...</p>
+    </div>
+    <p><strong>Total: <span id="cart-total">0</span> RON</strong></p>
+    <button class="checkout-button" onclick="checkout()">Finalizează comanda</button>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
