@@ -10,7 +10,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
 
-const uri = process.env.MONGO_URI || "mongodb+srv://<username>:<password>@cluster.mongodb.net/cosmetics_shop";
+const uri = process.env.MONGO_URI || "mongodb+srv://UserNameDB:UserNameDB@cluster.mongodb.net/cosmetics_shop";
 const client = new MongoClient(uri);
 
 let database;
