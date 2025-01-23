@@ -19,7 +19,10 @@ body {
     --background-color: #f4eef0; 
 }
 
-/* Header */
+h1 {
+    color: #e92361;
+    font-family: "Segoe UI";
+}
 header {
     background-color: var(--primary-color);
     color: white;
