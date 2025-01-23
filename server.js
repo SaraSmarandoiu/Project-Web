@@ -97,7 +97,7 @@ app.post("/update-cart", authenticate, async (req, res) => {
     }
 
     const result = await database.collection("customers").updateOne(
-      { _id: ObjectId(req.user.id) },
+      { _id: new ObjectId(req.user.id) },
       { $set: { cart } }
     );
 
@@ -116,13 +116,13 @@ app.post("/place-order", authenticate, async (req, res) => {
   try {
     const { items } = req.body;
 
-    const customer = await database.collection("customers").findOne({ _id: ObjectId(req.user.id) });
+    const customer = await database.collection("customers").findOne({ _id: new ObjectId(req.user.id) });
 
     if (!customer) {
       return res.status(404).json({ message: "Clientul nu a fost găsit." });
     }
 
-    const productIds = items.map(item => ObjectId(item.productId));
+    const productIds = items.map(item => new ObjectId(item.productId));
     const products = await database.collection("products").find({ _id: { $in: productIds } }).toArray();
 
     let total = 0;
@@ -145,7 +145,7 @@ app.post("/place-order", authenticate, async (req, res) => {
 
     for (const item of items) {
       await database.collection("products").updateOne(
-        { _id: ObjectId(item.productId) },
+        { _id: new ObjectId(item.productId) },
         { $inc: { stock: -item.quantity } }
       );
     }
@@ -158,7 +158,7 @@ app.post("/place-order", authenticate, async (req, res) => {
 
 app.get("/orders", authenticate, async (req, res) => {
   try {
-    const orders = await database.collection("orders").find({ customer_id: ObjectId(req.user.id) }).toArray();
+    const orders = await database.collection("orders").find({ customer_id: new ObjectId(req.user.id) }).toArray();
     res.json(orders);
   } catch (err) {
     res.status(500).json({ error: err.message });
