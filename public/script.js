@@ -1,7 +1,7 @@
 const API_URL = "http://localhost:3000";
-
+// array - stocheaza elementele din cos
 let cart = []; 
-
+//salveaza cosul din localStorage si trimite cerere in API pentru a actualiza cosul, folosind token-ul
 async function saveCart() {
   localStorage.setItem("cart", JSON.stringify(cart));
 
